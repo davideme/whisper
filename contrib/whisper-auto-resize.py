@@ -134,10 +134,10 @@ def processMetric(fullPath, schemas, agg_schemas):
     info_xFilesFactor = "{0:.2f}".format(info['xFilesFactor'])
     str_xFilesFactor =  "{0:.2f}".format(xFilesFactor)
 
-    isFilesFactorEqual = round(abs(xFilesFactor-info['xFilesFactor']), 2) == 0
+    is_files_factor_equal = round(abs(xFilesFactor-info['xFilesFactor']), 2) == 0
 
     # check to see if the current and configured aggregationMethods are the same
-    if not isFilesFactorEqual:
+    if not is_files_factor_equal:
         rebuild = True
         messages += '%s xFilesFactor differs real: %s should be: %s \n' % (metric, info_xFilesFactor, str_xFilesFactor)
     if (aggregationMethod != info['aggregationMethod']):
