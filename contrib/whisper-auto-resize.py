@@ -131,15 +131,12 @@ def processMetric(fullPath, schemas, agg_schemas):
         messages += 'updating Retentions from: %s to: %s \n' % (schema_file_args, schema_config_args)
 
     # only care about the first two decimals in the comparison since there is floaty stuff going on.
-    info_xFilesFactor = "{0:.2f}".format(info['xFilesFactor'])
-    str_xFilesFactor =  "{0:.2f}".format(xFilesFactor)
-
     is_files_factor_equal = round(abs(xFilesFactor-info['xFilesFactor']), 2) == 0
 
     # check to see if the current and configured aggregationMethods are the same
     if not is_files_factor_equal:
         rebuild = True
-        messages += '%s xFilesFactor differs real: %s should be: %s \n' % (metric, info_xFilesFactor, str_xFilesFactor)
+        messages += '%s xFilesFactor differs real: %s should be: %s \n' % (metric, info['xFilesFactor'], xFilesFactor)
     if (aggregationMethod != info['aggregationMethod']):
         rebuild = True
         messages += '%s aggregation schema differs real: %s should be: %s \n' % (metric, info['aggregationMethod'], aggregationMethod)
